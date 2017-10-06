@@ -49,6 +49,17 @@
             
             ImageDestroy($image);
         }
+
+        public static function content_stream($frame, $filename = false, $pixelPerPoint = 4, $outerFrame = 4,$saveandprint=FALSE)
+        {
+            $image = self::image($frame, $pixelPerPoint, $outerFrame);
+            ob_start (); 
+              imagejpeg ($image);
+              $image_data = ob_get_contents (); 
+            ob_end_clean (); 
+            ImageDestroy($image);
+            return $image_data;
+        }
     
         //----------------------------------------------------------------------
         public static function jpg($frame, $filename = false, $pixelPerPoint = 8, $outerFrame = 4, $q = 85) 
@@ -70,7 +81,7 @@
         {
             $h = count($frame);
             $w = strlen($frame[0]);
-            
+
             $imgW = $w + 2*$outerFrame;
             $imgH = $h + 2*$outerFrame;
             

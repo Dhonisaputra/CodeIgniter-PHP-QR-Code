@@ -57,6 +57,11 @@ Optional configuration
 	$config['white']		= array(70,130,180); // array, default is array(0,0,0)
 	$this->ciqrcode->initialize($config);
 
+### Method ###
+
+Get image data instead binary array
+	
+	$data = $this->ciqrcode->content_stream($params); // will return image content. you can make base64 data from it.
 
 Contributors
 ------------

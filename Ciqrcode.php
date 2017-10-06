@@ -98,8 +98,32 @@ class Ciqrcode
 			$size = 4;
 			if (isset($params['size'])) $size = min(max((int)$params['size'], 1), 10);
 			
-			QRcode::png($params['data'], NULL, $level, $size, 2);
+			return QRcode::png($params['data'], FALSE, $level, $size, 2);
 		}
+	}
+	
+	public function content_stream($params = array()) {
+		if (isset($params['black']) 
+			&& is_array($params['black']) 
+			&& count($params['black']) == 3 
+			&& array_filter($params['black'], 'is_int') === $params['black']) {
+			QRimage::$black = $params['black']; 
+		}
+		
+		if (isset($params['white']) 
+			&& is_array($params['white']) 
+			&& count($params['white']) == 3 
+			&& array_filter($params['white'], 'is_int') === $params['white']) {
+			QRimage::$white = $params['white']; 
+		}
+		
+		$level = 'L';
+		if (isset($params['level']) && in_array($params['level'], array('L','M','Q','H'))) $level = $params['level'];
+		
+		$size = 4;
+		if (isset($params['size'])) $size = min(max((int)$params['size'], 1), 10);
+		
+		return QRcode::content_stream($params['data'], FALSE, $level, $size, 2);
 	}
 }
 
