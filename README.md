@@ -59,7 +59,7 @@ Optional configuration
 
 ### Method ###
 
-## Return image data
+#### Return image data
 1.	Get image data instead binary array
 	This method will return image data. you can manipulate image data by using this method. 
 	for example, if you want to encode image data to base46.
