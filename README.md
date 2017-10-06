@@ -59,10 +59,10 @@ Optional configuration
 
 ### Method ###
 
-#### Return image data
-1.	Get image data instead binary array
-	This method will return image data. you can manipulate image data by using this method. 
-	for example, if you want to encode image data to base46.
+#### 1.	Return image data
+Get image data instead binary array
+This method will return image data. you can manipulate image data by using this method. 
+for example, if you want to encode image data to base46.
 
 	$data = $this->ciqrcode->content_stream($params);
 	// $base64 = base64_encode($data);
